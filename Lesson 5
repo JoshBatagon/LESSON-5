@@ -1,0 +1,133 @@
+Example 1
+BEGIN DBMS_OUTPUT.PUT_LINE
+    ('josh');
+END;
+Ques: What do you think DBMS_OUTPUT.PUT_LINE does?
+DBMS_OUTPUT.PUT_LINE is that prints messages to the console or output buffer
+
+Example 2
+DECLARE
+    my_name VARCHAR2(50) := 'josh';
+    age NUMBER := 19;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE
+    ('My name is ' || my_name ||
+    ' and I am ' || age || 
+    ' years old.');
+END;
+
+Ques: What happens if you change VARCHAR2 to NUMBER for my_name?
+It get an error because DBMS_OUTPUT.PUT_LINE expects a string
+
+Module 1 Activity:
+DECLARE
+    team_name VARCHAR2(50) := 
+    'tabon';
+    address VARCHAR2(50) := 
+    'tabon_tabon';
+    team_member NUMBER := 10;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE
+    ('Team:' || team_name ||
+    ', Adress: ' || adress ||
+', Member: ' || team_member);
+END;
+
+
+Module 2 Activity:
+DECLARE
+    monthly_fee NUMBER := 500;
+    month NUMBER := 5;
+    total_fee NUMBER;
+BEGIN
+    total_fee := 
+    monthly_fee * month;
+    DBMS_OUTPUT.PUT_LINE('After ' ||
+    month || ' month, my total fee is ' || 
+    total_fee || ' pesos.');
+END;
+
+Module 3 Activity:
+DECLARE
+   grade NUMBER := 80;
+BEGIN
+   IF grade <= 80 THEN
+   DBMS_OUTPUT.PUT_LINE
+   ('Congratulations, you passed!');
+ELSE
+   DBMS_OUTPUT.PUT_LINE('You did not
+    pass. Keep trying!');
+
+END IF;
+END;
+
+Module 4 Activity:
+CREATE TABLE my_heroes(
+    hero_id NUMBER,
+    hero_name VARCHAR2(20),
+    win_rate NUMBER
+);
+
+INSERT INTO my_heroes(hero_id,hero_name,win_rate)
+VALUES(1,'Vale',70);
+
+INSERT INTO my_heroes(hero_id,hero_name,win_rate)
+VALUES(2,'Roger',58);
+
+INSERT INTO my_heroes(hero_id,hero_name,win_rate)
+VALUES(3,'lesley',50);
+
+Challenge Questions:
+ 1.
+UPDATE my_heroes
+SET hero_name = 'Nana'
+WHERE hero_id = 1;
+
+2.
+DELETE my_heroes
+WHERE hero_id = 1;
+
+Module 5 Activity:
+CREATE TABLE my_heroes(
+    hero_id NUMBER,
+    hero_name VARCHAR2(20),
+    win_rate NUMBER
+);
+
+
+
+INSERT INTO my_heroes(hero_id,hero_name,win_rate)
+VALUES(3,'lesley',50);
+
+INSERT INTO my_top_heroes(hero_id,hero_name,win_rate)
+VALUES(4,'Gusion',58);
+
+INSERT INTO my_heroes(hero_id,hero_name,win_rate)
+VALUES(5,'moscov',50);
+
+
+
+CREATE TABLE Favorite_skin_category(
+    skin_id NUMBER,
+    skin_name VARCHAR2(20),
+    matches NUMBER
+);
+
+INSERT INTO Favorite_skin_category(skin_id,skin_name,matches)
+VALUES(1,'EPIC',589);
+
+INSERT INTO Favorite_skin_category(skin_id,skin_name,matches)
+VALUES(2,'normal',800);
+
+INSERT INTO Favorite_skin_category(skin_id,skin_name,matches)
+VALUES(3,'Elite',500);
+
+
+SELECT my_heroes.hero_name
+FROM my_heroes
+JOIN Favorite_skin_category 
+ON my_heroes.hero_id = 
+    Favorite_skin_category.hero_id;
+
+
+
